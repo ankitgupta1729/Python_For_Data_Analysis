@@ -1,0 +1,169 @@
+
+Link for code: https://github.com/wesm/pydata-book/blob/3rd-edition/ch02.ipynb
+
+
+As Python is an interpreted programming language, in general most Python code will
+run substantially slower than code written in a compiled language like Java or C++. As
+programmer time is typically more valuable than CPU time, many are happy to make
+this tradeoff.
+
+Python is not an ideal language for highly concurrent, multithreaded applications, particularly
+applications with many CPU-bound threads. The reason for this is that it has
+what is known as the global interpreter lock (GIL), a mechanism which prevents the
+interpreter from executing more than one Python bytecode instruction at a time. The
+technical reasons for why the GIL exists are beyond the scope of this book, but as of
+this writing it does not seem likely that the GIL will disappear anytime soon. While it
+is true that in many big data processing applications, a cluster of computers may be
+required to process a data set in a reasonable amount of time, there are still situations
+where a single-process, multithreaded system is desirable
+
+This is not to say that Python cannot execute truly multithreaded, parallel code; that
+code just cannot be executed in a single Python process. As an example, the Cython
+project features easy integration with OpenMP, a C framework for parallel computing,
+in order to to parallelize loops and thus significantly speed up numerical algorithms.
+
+(1) NumPy:
+
+NumPy, short for Numerical Python, is the foundational package for scientific computing
+in Python.
+
+The majority of this book will be based on NumPy and libraries built
+on top of NumPy. It provides, among other things:
+• A fast and efficient multidimensional array object ndarray
+• Functions for performing element-wise computations with arrays or mathematical
+operations between arrays
+• Tools for reading and writing array-based data sets to disk
+• Linear algebra operations, Fourier transform, and random number generation
+• Tools for integrating connecting C, C++, and Fortran code to Python
+
+libraries written in a lower-level language, such as C or Fortran, can
+operate on the data stored in a NumPy array without copying any data.
+
+(2) pandas:
+
+The primary object in pandas that will be used in this book is the DataFrame, a twodimensional
+tabular, column-oriented data structure with both row and column labels
+
+pandas combines the high performance array-computing features of NumPy with the
+flexible data manipulation capabilities of spreadsheets and relational databases (such
+as SQL). It provides sophisticated indexing functionality to make it easy to reshape,
+slice and dice, perform aggregations, and select subsets of data. pandas is the primary
+tool that we will use in this book
+
+For users of the R language for statistical computing, the DataFrame name will be
+familiar, as the object was named after the similar R data.frame object. They are not
+the same, however; the functionality provided by data.frame in R is essentially a strict
+subset of that provided by the pandas DataFrame.
+
+The pandas name itself is derived from "panel data", an econometrics term for multidimensional
+structured data sets, and Python data analysis itself.
+
+(3) matplotlib:
+
+matplotlib is the most popular Python library for producing plots and other 2D data
+visualizations. It was originally created by John D. Hunter (JDH) and is now maintained
+by a large team of developers. It is well-suited for creating plots suitable for publication.
+It integrates well with IPython (see below), thus providing a comfortable interactive
+environment for plotting and exploring data. The plots are also interactive; you can
+zoom in on a section of the plot and pan around the plot using the toolbar in the plot
+window.
+
+(4) IPython:
+
+IPython is the component in the standard scientific Python toolset that ties everything
+together. It provides a robust and productive environment for interactive and exploratory
+computing. It is an enhanced Python shell designed to accelerate the writing,
+testing, and debugging of Python code. It is particularly useful for interactively working
+with data and visualizing data with matplotlib. IPython is usually involved with the
+majority of my Python work, including running, debugging, and testing code.
+Aside from the standard terminal-based IPython shell, the project also provides
+• A Mathematica-like HTML notebook for connecting to IPython through a web
+browser (more on this later).
+• A Qt framework-based GUI console with inline plotting, multiline editing, and
+syntax highlighting
+• An infrastructure for interactive parallel and distributed computing
+
+(5) SciPy:
+
+SciPy is a collection of packages addressing a number of different standard problem
+domains in scientific computing. Here is a sampling of the packages included:
+• scipy.integrate: numerical integration routines and differential equation solvers
+• scipy.linalg: linear algebra routines and matrix decompositions extending beyond
+those provided in numpy.linalg.
+• scipy.optimize: function optimizers (minimizers) and root finding algorithms
+• scipy.signal: signal processing tools
+• scipy.sparse: sparse matrices and sparse linear system solvers
+• scipy.special: wrapper around SPECFUN, a Fortran library implementing many
+common mathematical functions, such as the gamma function
+• scipy.stats: standard continuous and discrete probability distributions (density
+functions, samplers, continuous distribution functions), various statistical tests,
+and more descriptive statistics
+• scipy.weave: tool for using inline C++ code to accelerate array computations
+Together NumPy and SciPy form a reasonably complete computational replacement
+for much of MATLAB along with some of its add-on toolboxes.
+
+(6) statsmodels:
+
+statsmodels is a statistical analysis package that was seeded by work from Stanford
+University statistics professor Jonathan Taylor, who implemented a number of regres‐
+sion analysis models popular in the R programming language. Skipper Seabold and
+Josef Perktold formally created the new statsmodels project in 2010 and since then
+have grown the project to a critical mass of engaged users and contributors. Nathaniel
+Smith developed the Patsy project, which provides a formula or model specification
+framework for statsmodels inspired by R’s formula system.
+Compared with scikit-learn, statsmodels contains algorithms for classical (primarily
+frequentist) statistics and econometrics. This includes such submodules as:
+• Regression models: Linear regression, generalized linear models, robust linear
+models, linear mixed effects models, etc.
+• Analysis of variance (ANOVA)
+• Time series analysis: AR, ARMA, ARIMA, VAR, and other models
+• Nonparametric methods: Kernel density estimation, kernel regression
+• Visualization of statistical model results
+statsmodels is more focused on statistical inference, providing uncertainty estimates
+and p-values for parameters. scikit-learn, by contrast, is more prediction-focused.
+As with scikit-learn, I will give a brief introduction to statsmodels and how to use it
+with NumPy and pandas.
+
+
+--- Installing or Updating Python Packages:
+
+
+At some point while reading, you may wish to install additional Python packages that
+are not included in the Anaconda distribution. In general, these can be installed with
+the following command:
+
+conda install package_name
+
+If this does not work, you may also be able to install the package using the pip pack‐
+age management tool:
+
+pip install package_name
+
+You can update packages by using the conda update command:
+
+conda update package_name
+
+pip also supports upgrades using the --upgrade flag:
+
+pip install --upgrade package_name
+
+You will have several opportunities to try out these commands throughout the book.
+While you can use both conda and pip to install packages, you
+should not attempt to update conda packages with pip, as doing so
+can lead to environment problems. When using Anaconda or Min‐
+iconda, it’s best to first try updating with conda.
+
+Jargon:
+
+I’ll use some terms common both to programming and data science that you may not
+be familiar with. Thus, here are some brief definitions:
+Munge/munging/wrangling
+Describes the overall process of manipulating unstructured and/or messy data
+into a structured or clean form. The word has snuck its way into the jargon of
+many modern-day data hackers. “Munge” rhymes with “grunge.”
+Pseudocode
+A description of an algorithm or process that takes a code-like form while likely
+not being actual valid source code.
+Syntactic sugar
+Programming syntax that does not add new features, but makes something more
+convenient or easier to type

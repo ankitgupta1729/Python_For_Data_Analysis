@@ -1,0 +1,176 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+.page-standalone-content .dataTables-nosidebar tr {
+    display: table;
+    width: 100%;
+    min-width: initial;
+}
+
+.page-standalone-content .dataTables-nosidebar tr th {
+    vertical-align: top;
+    padding-left: .4em;
+    padding-right: .4em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+.page-standalone-content .dataTables-nosidebar tr td {
+    padding-left: .5em;
+    padding-right: .5em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+.page-standalone-content .dataTables-nosidebar tr th p {
+    /*line-height: 1.15;*/
+}
+
+.page-standalone-content table.dataTable th p span.dtfullname {
+    font-size: .8rem;
+    white-space: normal !important;
+}
+
+.page-standalone-content .dataTables-nosidebar tr th span.dtmobilename {
+    display: none;
+}
+
+.page-standalone-content .dataTables-nosidebar tbody {
+    /*margin-top: 16px;*/
+}
+
+.page-standalone-content .dataTables-nosidebar tr th:nth-of-type(1),
+.page-standalone-content .dataTables-nosidebar tr td:nth-of-type(1) {
+    /* bank name */
+    width: 14%;
+    min-width: 0;
+}
+
+.page-standalone-content .dataTables-nosidebar tr th:nth-of-type(2),
+.page-standalone-content .dataTables-nosidebar tr td:nth-of-type(2) {
+    /* city */
+    width: 14%;
+    min-width: 0;
+}
+
+.page-standalone-content .dataTables-nosidebar tr th:nth-of-type(3),
+.page-standalone-content .dataTables-nosidebar tr td:nth-of-type(3) {
+    /* state */
+    width: 9%;
+    min-width: 0;
+}
+
+.page-standalone-content .dataTables-nosidebar tr th:nth-of-type(4),
+.page-standalone-content .dataTables-nosidebar tr td:nth-of-type(4) {
+    /* cert */
+    width: 8%;
+    min-width: 0;
+}
+
+.page-standalone-content .dataTables-nosidebar tr th:nth-of-type(5),
+.page-standalone-content .dataTables-nosidebar tr td:nth-of-type(5) {
+    /* acquiring institution */
+    width: 22%;
+    min-width: 0;
+}
+
+.page-standalone-content .dataTables-nosidebar tr th:nth-of-type(6),
+.page-standalone-content .dataTables-nosidebar tr td:nth-of-type(6) {
+    /* closing date */
+    width: 18%;
+    min-width: 0;
+}
+
+.page-standalone-content .dataTables-nosidebar tr th:nth-of-type(7),
+.page-standalone-content .dataTables-nosidebar tr td:nth-of-type(7) {
+    /* fund */
+    width: 9%;
+    min-width: 0;
+}
+
+.dataTables-content-header {
+    height: 50px;
+}
+
+@media (max-width: 1023px) {
+    table.dataTable.dataTables-nosidebar {
+        width: 100%;
+    }
+    .page-standalone-content .dataTables-nosidebar tr th span.dtmobilename {
+        display: inline;
+        font-size: 12px;
+    }
+    .page-standalone-content .dataTables-nosidebar tr th span.dtfullname {
+        display: none;
+    }
+    .page-standalone-content .dataTables-nosidebar tr th {
+        font-size: 12px;
+    }
+	.page-standalone-content .dataTables-nosidebar tbody.dataTables-content-main th,
+    .page-standalone-content .dataTables-nosidebar tbody.dataTables-content-main td {
+        padding: 0.1rem;
+        word-break: break-word;
+    }
+	
+	.page-standalone-content .dataTables-nosidebar tr th:nth-of-type(1),
+	.page-standalone-content .dataTables-nosidebar tr td:nth-of-type(1) {
+		/* bank */
+		width: 14%;
+	}
+	.page-standalone-content .dataTables-nosidebar tr th:nth-of-type(2),
+	.page-standalone-content .dataTables-nosidebar tr td:nth-of-type(2) {
+		/* city */
+		width: 13%;
+	}
+	.page-standalone-content .dataTables-nosidebar tr th:nth-of-type(3),
+	.page-standalone-content .dataTables-nosidebar tr td:nth-of-type(3) {
+		/* state */
+		width: 6%;
+	}
+	.page-standalone-content .dataTables-nosidebar tr th:nth-of-type(4),
+	.page-standalone-content .dataTables-nosidebar tr td:nth-of-type(4) {
+		/* cert */
+		width: 8%;
+	}
+	.page-standalone-content .dataTables-nosidebar tr th:nth-of-type(5),
+	.page-standalone-content .dataTables-nosidebar tr td:nth-of-type(5) {
+		/* ai */
+		width: 22%;
+	}
+	.page-standalone-content .dataTables-nosidebar tr th:nth-of-type(6),
+	.page-standalone-content .dataTables-nosidebar tr td:nth-of-type(6) {
+		/* closing */
+		width: 18%;
+	}
+	
+	.page-standalone-content .dataTables-nosidebar tr th:nth-of-type(7),
+	.page-standalone-content .dataTables-nosidebar tr td:nth-of-type(7) {
+		/* fund */
+		width: 9%;
+	}
+	
+	article div.flex-align-center.flex-justify-center {
+		flex-direction: column;
+	}
+	
+}
+
+
+/* tr.odd td {
+	background-color:#F0F0F6;
+} */
+
+a.paginate_button,
+.paginate_button,
+.paginate_button:visited {
+    /* to squeeze the pagination in place, we need to override the pagination in custom.css. TH 4/22/21 */
+    padding: 0 4px;
+    margin: 0 4px;
+}
+
+.sorting p:after,
+.sorting_asc p:after,
+.sorting_desc p:after {
+    width: 21px !important;
+}
