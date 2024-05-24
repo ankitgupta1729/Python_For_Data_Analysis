@@ -1,0 +1,6 @@
+pip
+requests
+pillow
+bitarray
+ipykernel
+jupyter
